@@ -1,0 +1,211 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Calculator</title>
+  <style>
+    body{
+       
+margin:0;
+        padding: 0;
+        font-family: Arial, Helvetica, sans-serif;
+        box-sizing: border-box;
+    }
+    .container{
+      width: 400px;
+margin-left: 330px;
+padding-top: 0px;
+padding-bottom: 0px;
+  height: auto;
+  background: rgb(221, 221, 254);
+display: flex;
+align-items: center;
+justify-content: center;
+border-radius: 10px;
+
+ 
+  
+  }
+  h1{
+    height:50px;
+  text-align: center;
+  text-decoration: underline;
+   margin-top:10px;
+/*     margin-bottom:40px; */
+  text-decoration-style: double;
+  font-size: 45px;
+  }
+.calculator
+{
+    background: rgba(0, 0, 0, 0.75);
+    height: 460px;
+width: 350px;
+padding: 20px;
+    border: 2px solid;
+    border-radius: 10px;
+    
+}
+.calculator  button
+{
+    border: 0;
+    outline: 0;
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    box-shadow: -5px -5px 15px rgba(255, 255, 255, 0.647),5px 5px 15px rgba(0, 0, 0, 0.185);
+    background: transparent;
+    font-size: 20px;
+    color: rgb(0, 0, 0);
+    cursor: pointer;
+    margin: 10px;
+}
+
+.disp {
+  display: flex;
+justify-content: flex-start;
+margin: 0px 0px 20px 1px;
+    width: 300px;
+    height: 60px;
+   
+}
+ .disp input{
+  width: 320px;
+    text-align: right;
+    flex: 1;
+    font-size: 30px;
+    box-shadow: none;
+    color: #ffffff;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.res {
+display: flex;
+justify-content: flex-start;
+margin: 0px 0px 20px 1px;
+    width: 300px;
+    height: 60px;
+   
+}
+ .res input{
+  width: 320px;
+    text-align: right;
+    flex: 1;
+    font-size: 30px;
+    box-shadow: none;
+    color: #ffffff;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.key {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 5px;
+  font-size: 20px;
+  width: 390px;
+  height:60px;
+}
+
+
+.calculator  .equal
+{
+    border: 0;
+    outline: 0;
+    width: 300px;
+    font-size: 30px;
+    font-weight: bolder;
+    height: 50px;
+    border-radius: 50px;
+    box-shadow: -2px -2px 15px rgb(255, 255, 255,0.4),5px 5px 15px rgba(239, 6, 6, 0.5);
+    background: rgb(247, 23, 23);
+   
+    color: white;
+    cursor: pointer;
+    margin: 20px 20px 0px 20px;
+}
+
+.key .operator1
+{
+    color: #f00;
+    font-size: 30px;
+    font-weight: bolder;
+    
+
+}
+.key .operator
+{
+    color: #f00;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+  </style>
+</head>
+<body>
+  <!-- <h1>
+    CALCULATOR
+  </h1> -->
+    <div class="container">
+        
+  <div class="calculator">
+
+        <div class="disp">
+    <input type="text" id="display"  disabled>
+    
+</div>
+<div class="res">
+<input type="text" id="result"  disabled>
+</div>
+    <div class="key">
+      <button class="operator" onclick="clearDisplay()">C</button>
+      <button  class="operator" onclick="appendTo('/')">/</button>
+      <button  class="operator1" onclick="appendTo('*')">*</button>
+      <button class="operator"  onclick="deleteD()">DE</button>
+    </div><div class="key">
+      <button onclick="appendTo('9')">9</button>
+      <button onclick="appendTo('8')">8</button>
+      <button onclick="appendTo('7')">7</button>
+      <button class="operator"  onclick="appendTo('+')">+</button>
+    </div><div class="key">
+      <button onclick="appendTo('6')">6</button>
+      <button onclick="appendTo('5')">5</button>
+      <button onclick="appendTo('4')">4</button>
+      <button  class="operator1" onclick="appendTo('-')">-</button>
+    </div><div class="key">
+      <button onclick="appendTo('3')">3</button>
+      <button onclick="appendTo('2')">2</button>
+      <button onclick="appendTo('1')">1</button>
+      <button onclick="appendTo('0')">0</button>
+      </div>
+    <input type="button" value="=" onclick="calculateResult()" class="equal">
+      
+  </div>
+ 
+</div>
+  
+</body>
+</html>
+<script>
+   
+   function deleteD(display)  {
+    let displayValue = document.getElementById('display').value;
+  let newDisplayValue = displayValue.slice(0, -1);
+  document.getElementById('display').value = newDisplayValue;
+}
+ 
+function appendTo(value) {
+
+  document.getElementById('display').value += value;
+  
+}
+function calculateResult() {
+  let displayValue = document.getElementById('display').value;
+  let result = eval(displayValue);
+  document.getElementById('result').value = result;
+}
+function clearDisplay() {
+  document.getElementById('display').value = '';
+  document.getElementById('result').value = '';
+}
+</script>
